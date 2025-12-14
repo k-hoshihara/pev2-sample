@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17.7
+    container_name: postgres17.7
+    environment:
+      POSTGRES_PASSWORD: apppass
+      POSTGRES_DB: appdb
+      TZ: Asia/Tokyo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/initdb:/docker-entrypoint-initdb.d
+      
+volumes:
+  pgdata:
